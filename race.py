@@ -10,7 +10,7 @@ def increase_positions(positions: 'tuple'):
     return tuple(map(lambda a: a + 1 if random() > 0.3 else a, positions))
 
 
-def position_output(car_position: 'tuple'):
+def position_output(car_position: 'int'):
     return "-" * car_position
 
 
