@@ -13,11 +13,12 @@ def one(s):
 
 
 def rule_sequence(s, rules):
-    if not rules:
-        return s
-    s = rules[0](s)
-    return rule_sequence(s, rules[1:])
+    if not rules or not s:
+        return s if s else None
+    return rule_sequence(rules[0](s), rules[1:])
 
 
 print(rule_sequence('0101', (zero, one, zero)))
 print(rule_sequence('0101', (zero, zero)))
+print(rule_sequence('', (zero, zero)))
+print(rule_sequence(None, (zero, zero)))
