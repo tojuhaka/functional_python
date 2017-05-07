@@ -1,4 +1,5 @@
-""" Example of functional race program with recursion """
+""" Example of functional race program with recursion. Prints the race usingh
+    multiplied lines  """
 
 from random import random
 
