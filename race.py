@@ -6,20 +6,20 @@ from random import random
 start_positions = (1, 1, 1)
 
 
-def increase_positions(positions: 'tuple'):
+def increase_positions(positions: 'tuple') -> tuple:
     return tuple(map(lambda a: a + 1 if random() > 0.3 else a, positions))
 
 
-def position_output(car_position: 'int'):
+def position_output(car_position: 'int') -> str:
     return "-" * car_position
 
 
-def draw(car_positions: 'tuple'):
+def draw(car_positions: 'tuple') -> None:
     print("")
     print("\n".join(list(map(position_output, car_positions))))
 
 
-def race(start_position: 'tuple', time: 'int'):
+def race(start_position: 'tuple', time: 'int') -> tuple:
     time -= 1
     if time < 0:
         return start_position
