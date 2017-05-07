@@ -10,8 +10,13 @@ def increase_positions(positions: 'tuple'):
     return tuple(map(lambda a: a + 1 if random() > 0.3 else a, positions))
 
 
-def draw(car_position: 'tuple'):
-    print("-" * car_position)
+def position_output(car_position: 'tuple'):
+    return "-" * car_position
+
+
+def draw(car_positions: 'tuple'):
+    print("")
+    print("\n".join(list(map(position_output, car_positions))))
 
 
 def race(start_position: 'tuple', time: 'int'):
@@ -19,10 +24,7 @@ def race(start_position: 'tuple', time: 'int'):
     if time < 0:
         return start_position
 
-    print("")
-    for position in start_position:
-        draw(position)
-
+    draw(start_position)
     return race(increase_positions(start_position), time)
 
 
