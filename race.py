@@ -1,13 +1,11 @@
-""" Example of functional race program with recursion. Prints the race usingh
-    multiplied lines  """
 
 from random import random
 
-start_positions = (1, 1, 1)
+start_position = (1, 1, 1)
 
 
-def increase_positions(positions: 'tuple') -> tuple:
-    return tuple(map(lambda a: a + 1 if random() > 0.3 else a, positions))
+def increase_positions(position: 'tuple') -> tuple:
+    return tuple(map(lambda a: a + 1 if random() > 0.3 else a, position))
 
 
 def position_output(car_position: 'int') -> str:
@@ -20,12 +18,13 @@ def draw(car_positions: 'tuple') -> None:
 
 
 def race(start_position: 'tuple', time: 'int') -> tuple:
-    time -= 1
-    if time < 0:
-        return start_position
+    # recursive race is also possible here but the python stack is limited
+    # to 1000. So It's better to go with generator instead'
+    for i in range(0, time):
+        yield start_position
+        start_position = increase_positions(start_position)
 
-    draw(start_position)
-    return race(increase_positions(start_position), time)
+
+[draw(i) for i in race(start_position, 100)]
 
 
-race(start_positions, 5)
